@@ -1,0 +1,3 @@
+src/.env
+*terraform*
+__pycache__/

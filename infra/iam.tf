@@ -1,9 +1,13 @@
 resource "aws_iam_user" "elt-user" {
   name = "elt-user"
+
+  tags = {
+    tag-key = "tag-value"
+  }
 }
 
-resource "aws_iam_user_policy" "lb_ro" {
-  name = "test"
+resource "aws_iam_user_policy" "elt-user-policy" {
+  name = "elt-user-policy"
   user = aws_iam_user.elt-user.name
 
   # Terraform's "jsonencode" function converts a
@@ -20,9 +24,4 @@ resource "aws_iam_user_policy" "lb_ro" {
       },
     ]
   })
-}
-
-
-resource "aws_iam_access_key" "lb" {
-  user = aws_iam_user.lb.name
 }
